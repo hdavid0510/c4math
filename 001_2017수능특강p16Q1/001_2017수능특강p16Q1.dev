@@ -1,6 +1,6 @@
 [Project]
-FileName=C4math.dev
-Name=C4math
+FileName=001_2017수능특강p16Q1.dev
+Name=001_2017수능특강p16Q1
 Type=1
 Ver=2
 ObjFiles=
@@ -51,9 +51,9 @@ AutoIncBuildNr=0
 SyncProduct=1
 
 [Unit1]
-FileName=001_2017수능특강p16Q1\main.cpp
+FileName=main.cpp
 CompileCpp=1
-Folder=C4math
+Folder=001_2017수능특강p16Q1
 Compile=1
 Link=1
 Priority=1000
