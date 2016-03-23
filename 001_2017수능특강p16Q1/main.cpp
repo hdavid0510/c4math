@@ -1,5 +1,5 @@
 /* This code is made for proving the answer of the question given in the book.
- * Question is from 2017 ìˆ˜ëŠ¥íŠ¹ê°• í™•ë¥ ê³¼í†µê³„ p.16 Q# 1.
+ * Question is from 2017 ¼ö´ÉÆ¯°­ È®·ü°úÅë°è p.16 Q# 1.
  * Original conditions : X={1,2,3,4,5} && f:X->X && f(1)!=f(2) && f(2)=f(3) && n(Y)=n(f(X))=3 .
  * With the conditions above, the original answer is 840.
  *
@@ -12,50 +12,50 @@
 #include <iomanip>
 using namespace std;
 
-const int size=5;				//ì›ì†Œ ìˆ˜ ê²°ì •
-const int X[size]={1,2,3,4,5};	//ì •ì˜ì—­ì´ìž ê³µì—­.  ì—¬ê¸°ì„œëŠ” ê³µì—­ìœ¼ë¡œ í™œìš©í•  ê²ƒì´ë‹¤
-int fX[size]={0};				//í•¨ìˆ«ê°’f(x)ì˜ ì§‘í•©:ì¹˜ì—­
-int count = 0;					//ì°¾ì€ í•¨ìˆ˜ì˜ ê°œìˆ˜
+const int size=5;				//¿ø¼Ò ¼ö °áÁ¤
+const int X[size]={1,2,3,4,5};			//Á¤ÀÇ¿ªÀÌÀÚ °ø¿ª.  ¿©±â¼­´Â °ø¿ªÀ¸·Î È°¿ëÇÒ °ÍÀÌ´Ù
+int fX[size]={0};				//ÇÔ¼ý°ªf(x)ÀÇ ÁýÇÕ:Ä¡¿ª
+int count = 0;					//Ã£Àº ÇÔ¼öÀÇ °³¼ö
 
-int nY(){	//ì¹˜ì—­ì˜ ì›ì†Œìˆ˜ ê²€ìƒ‰
-	int n=0;					//ì¼ë‹¨ 0ê°œë¼ê³  ìƒê°í•˜ê³  ì—¬ê¸°ì—ë‹¤ ì°¾ì€ê°œìˆ˜ ëˆ„ì 
-	bool first=true;			//ì¤‘ë³µëœ í•¨ìˆ«ê°’ì¸ì§€ í‘œì‹œí•¨
-	for(int i=0; i<size; i++){	//sizeë§Œí¼ ë°˜ë³µ, ië²ˆì§¸ í•¨ìˆ«ê°’ì— ëŒ€í•´ ì¡°ì‚¬ 
-		for(int j=i-1; j>=0; j--){//í˜„ìž¬ ì •ì˜ì—­(xê°’)ì´ì „ì— ì¤‘ë³µëœ ê²ƒ ìžˆëŠ”ì§€ ì¡°ì‚¬
-			if(fX[i] == fX[j]){ 	//ì¤‘ë³µ ë°œê²¬ì‹œ
-				first = false;		//ì¤‘ë³µìž„ì„ í‘œì‹œ
-				break; //ì¤‘ë³µì¡°ì‚¬ ì¤‘ë‹¨
+int nY(){	//Ä¡¿ªÀÇ ¿ø¼Ò¼ö °Ë»ö
+	int n=0;				//ÀÏ´Ü 0°³¶ó°í »ý°¢ÇÏ°í ¿©±â¿¡´Ù Ã£Àº°³¼ö ´©Àû
+	bool first=true;			//Áßº¹µÈ ÇÔ¼ý°ªÀÎÁö Ç¥½ÃÇÔ
+	for(int i=0; i<size; i++){	//size¸¸Å­ ¹Ýº¹, i¹øÂ° ÇÔ¼ý°ª¿¡ ´ëÇØ Á¶»ç 
+		for(int j=i-1; j>=0; j--){//ÇöÀç Á¤ÀÇ¿ª(x°ª)ÀÌÀü¿¡ Áßº¹µÈ °Í ÀÖ´ÂÁö Á¶»ç
+			if(fX[i] == fX[j]){ 	//Áßº¹ ¹ß°ß½Ã
+				first = false;		//Áßº¹ÀÓÀ» Ç¥½Ã
+				break; //Áßº¹Á¶»ç Áß´Ü
 			}
 		}
-		if(first) n++;			//ë§Œì•½ ìœ„ ì¤‘ë³µì¡°ì‚¬ì—ì„œ ì²˜ìŒë‚˜ì˜¨ í•¨ìˆ«ê°’ì´ë¼ íŒëª…ëœê²½ìš° ì¹˜ì—­ì›ì†Œìˆ˜ +1
-		else first=true;		//ì•„ë‹ˆë©´ (ì¤‘ë³µì´ì—ˆë‹¤ë©´) í‘œì‹œ ì´ˆê¸°í™” 
+		if(first) n++;			//¸¸¾à À§ Áßº¹Á¶»ç¿¡¼­ Ã³À½³ª¿Â ÇÔ¼ý°ªÀÌ¶ó ÆÇ¸íµÈ°æ¿ì Ä¡¿ª¿ø¼Ò¼ö +1
+		else first=true;		//¾Æ´Ï¸é (Áßº¹ÀÌ¾ú´Ù¸é) Ç¥½Ã ÃÊ±âÈ­ 
 	}
-	return n;					//ì°¾ì€ ì¹˜ì—­ ì›ì†Œìˆ˜ë¥¼ ë°˜í™˜
+	return n;					//Ã£Àº Ä¡¿ª ¿ø¼Ò¼ö¸¦ ¹ÝÈ¯
 }
 
-void search(int idx){			//í•¨ìˆ˜ê°€ ë¬¸ì œ ì¡°ê±´ì— ë¶€í•©í•˜ëŠ”ì§€ ì—¬ë¶€ ì¡°ì‚¬
-	for(int i=0; i<size; i++){		//ì²˜ìŒë¶€í„° ëê¹Œì§€ ì¡°ì‚¬í•œë‹¤
-		fX[idx]=X[i];				//f(idx), ì¦‰ idxë²ˆì§¸ ì •ì˜ì—­ì˜ í•¨ìˆ«ê°’ì„ ê³µì—­ì˜ ië²ˆì§¸ ì›ì†Œë¡œ ì§€ì •í•œë‹¤
-		if(idx>=size-1){			//ë§Œì•½ ì´ë²ˆ ì¡°ì‚¬ê°€ ë§ˆì§€ë§‰ í•¨ìˆ«ê°’ì¸ ê²½ìš°
-			if((fX[0]!=fX[1]) && (fX[2]!=fX[1]) && (nY()==3)){//ìµœì¢… ì¡°ê±´ íŒë‹¨
-				count++;				//ì¡°ê±´ ë¶€í•©ì‹œ: ì¹´ìš´íŠ¸(ì°¾ì€ ê°œìˆ˜) ì¦ê°€ì‹œí‚¨ë‹¤
-				cout << "found: "<<setw(4) << count << "\t";//ë²ˆí˜¸ ì¶œë ¥
-				for(int i=0; i<size; i++)//ëª¨ë“  í•¨ìˆ«ê°’ì„ ìˆœì„œëŒ€ë¡œ ì¶œë ¥
+void search(int idx){			//ÇÔ¼ö°¡ ¹®Á¦ Á¶°Ç¿¡ ºÎÇÕÇÏ´ÂÁö ¿©ºÎ Á¶»ç
+	for(int i=0; i<size; i++){		//Ã³À½ºÎÅÍ ³¡±îÁö Á¶»çÇÑ´Ù
+		fX[idx]=X[i];				//f(idx), Áï idx¹øÂ° Á¤ÀÇ¿ªÀÇ ÇÔ¼ý°ªÀ» °ø¿ªÀÇ i¹øÂ° ¿ø¼Ò·Î ÁöÁ¤ÇÑ´Ù
+		if(idx>=size-1){			//¸¸¾à ÀÌ¹ø Á¶»ç°¡ ¸¶Áö¸· ÇÔ¼ý°ªÀÎ °æ¿ì
+			if((fX[0]!=fX[1]) && (fX[2]!=fX[1]) && (nY()==3)){//ÃÖÁ¾ Á¶°Ç ÆÇ´Ü
+				count++;				//Á¶°Ç ºÎÇÕ½Ã: Ä«¿îÆ®(Ã£Àº °³¼ö) Áõ°¡½ÃÅ²´Ù
+				cout << "found: "<<setw(4) << count << "\t";//¹øÈ£ Ãâ·Â
+				for(int i=0; i<size; i++)//¸ðµç ÇÔ¼ý°ªÀ» ¼ø¼­´ë·Î Ãâ·Â
 					cout<<"f("<<X[i]<<")="<<fX[i]<<"\t";
-				cout<<"// n(Y)="<<nY()<<endl;//ê³µì—­ ê°œìˆ˜ í™•ì¸(nY()=3 ì´ë¼ëŠ” ë¬¸êµ¬ê°€ ë§¤ í–‰ ë§ˆì§€ë§‰ì— ë“±ìž¥í•´ì•¼ í•¨)
-			}else{						//ì¡°ê±´ ë¶ˆì¶©ì¡±ì‹œ
-				continue;					//ì´ë²ˆ ì¡°í•©ì— ëŒ€í•˜ì—¬ ì¡°ì‚¬ì¤‘ë‹¨
+				cout<<"// n(Y)="<<nY()<<endl;//°ø¿ª °³¼ö È®ÀÎ(nY()=3 ÀÌ¶ó´Â ¹®±¸°¡ ¸Å Çà ¸¶Áö¸·¿¡ µîÀåÇØ¾ß ÇÔ)
+			}else{						//Á¶°Ç ºÒÃæÁ·½Ã
+				continue;					//ÀÌ¹ø Á¶ÇÕ¿¡ ´ëÇÏ¿© Á¶»çÁß´Ü
 			}
-		}else{						//ë§Œì•½ í˜„ìž¬ ì¡°ì‚¬ì¤‘ì¸ í•¨ìˆ«ê°’ ë’¤ì— í•¨ìˆ«ê°’ì´ ë” ìžˆëŠ”ê²½ìš°
-			search(idx+1);				//í˜„ìž¬ê¹Œì§€ì˜ í•¨ìˆ«ê°’ ìƒíƒœë¡œ ë’·ë¶€ë¶„ì„ ì¡°ì‚¬í•œë‹¤
+		}else{						//¸¸¾à ÇöÀç Á¶»çÁßÀÎ ÇÔ¼ý°ª µÚ¿¡ ÇÔ¼ý°ªÀÌ ´õ ÀÖ´Â°æ¿ì
+			search(idx+1);				//ÇöÀç±îÁöÀÇ ÇÔ¼ý°ª »óÅÂ·Î µÞºÎºÐÀ» Á¶»çÇÑ´Ù
 		}
 	}
 }
 
 int main(){
-	search(0); //í•¨ìˆ˜ê°€ í•¨ìˆ˜ë¥¼ í˜¸ì¶œí• ë•Œë§ˆë‹¤, 0ë²ˆì§¸ë¶€í„° ì‹œìž‘í•˜ì—¬ ë’¤ìª½ìœ¼ë¡œ í•˜ë‚˜ì”© ìžë¦¬ë¥¼ ì´ë™í•´ê°€ë©° ì¡°ì‚¬í•œë‹¤.
-				//ì¦‰, ìœ„ ì¤„ì—ì„œëŠ” 0ë²ˆì§¸ í•¨ìˆ«ê°’ì¸ f(1)ì— ëŒ€í•´ ì¡°ì‚¬í•˜ë©° ê·¸ ì¡°ì‚¬ì˜ ì¼ë¶€ë¶„ìœ¼ë¡œ f(2)ë¥¼ ì¡°ì‚¬,
-				//ë˜ ê·¸ ì¼ë¶€ë¶„ìœ¼ë¡œ f(3)ì„ ì¡°ì‚¬í•˜ëŠ” ì‹ì´ë‹¤. ì´ëŸ¬í•œ ìž¬ê·€ì  êµ¬ì¡°ëŠ” ë§ˆì§€ë§‰ í•¨ìˆ«ê°’ì„ ì¡°ì‚¬í•˜ë©° ëë‚œë‹¤.
-	cout << "Finished. Totally "<<count<<" combination"<<(count<=1 ? " is":"s are")<<" found."<< endl; //ì¡°ì‚¬ ì™„ë£Œë¥¼ ì•Œë¦°ë‹¤.
+	search(0); //ÇÔ¼ö°¡ ÇÔ¼ö¸¦ È£ÃâÇÒ¶§¸¶´Ù, 0¹øÂ°ºÎÅÍ ½ÃÀÛÇÏ¿© µÚÂÊÀ¸·Î ÇÏ³ª¾¿ ÀÚ¸®¸¦ ÀÌµ¿ÇØ°¡¸ç Á¶»çÇÑ´Ù.
+				//Áï, À§ ÁÙ¿¡¼­´Â 0¹øÂ° ÇÔ¼ý°ªÀÎ f(1)¿¡ ´ëÇØ Á¶»çÇÏ¸ç ±× Á¶»çÀÇ ÀÏºÎºÐÀ¸·Î f(2)¸¦ Á¶»ç,
+				//¶Ç ±× ÀÏºÎºÐÀ¸·Î f(3)À» Á¶»çÇÏ´Â ½ÄÀÌ´Ù. ÀÌ·¯ÇÑ Àç±ÍÀû ±¸Á¶´Â ¸¶Áö¸· ÇÔ¼ý°ªÀ» Á¶»çÇÏ¸ç ³¡³­´Ù.
+	cout << "Finished. Totally "<<count<<" combination"<<(count<=1 ? " is":"s are")<<" found."<< endl; //Á¶»ç ¿Ï·á¸¦ ¾Ë¸°´Ù.
 	return 0;
 }
